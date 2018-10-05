@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { firebase } from "../firebase";
 
+import './PostInput.css'
+
 class PostInput extends Component {
   constructor(props) {
     super(props);
@@ -33,18 +35,20 @@ class PostInput extends Component {
   };
 
   render() {
+    const isInvalid = this.state.currentPost.trim() === '';
+
     return (
-      <section className="add-item">
+      <section className="col-8 offset-2 col-md-4 offset-md-1 justify-content-around post-entry">
         <form onSubmit={this.handleSubmit}>
           <h3>¿Qué te dio luz este día?</h3>
-          <input
+          <textarea
             type="text"
             name="currentPost"
             placeholder="Escribelo aquí"
             onChange={this.handleChange}
             value={this.state.currentPost}
           />
-          <button>Compartir</button>
+          <button disabled={isInvalid}>Compartir</button>
         </form>
       </section>
     );

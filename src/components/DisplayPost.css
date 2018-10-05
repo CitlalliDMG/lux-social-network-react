@@ -1,0 +1,30 @@
+.display-posts ul {
+  list-style-type: none;
+  padding-inline-start: 0px;
+}
+
+.display-posts li {
+  background-color: white;
+  margin-bottom: 15px;
+  padding: 5%;
+}
+
+.display-posts .text-color {
+  color: #26a69a;
+}
+
+.display-posts .bolder {
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+.display-posts hr {
+  background-color: #26a69a;
+}
+
+.display-posts .button-post {
+  background-color: #38468c;
+  border-radius: 5px;
+  padding: 1% 2%;
+  color: white;
+}

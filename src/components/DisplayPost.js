@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { firebase } from "../firebase";
 
+import './DisplayPost.css'
+
 class DisplayPost extends Component {
   constructor(props) {
     super(props);
@@ -34,18 +36,19 @@ class DisplayPost extends Component {
 
   render() {
     return (
-      <section className="display-item">
-        <div className="wrapper">
+      <section className="col-8 offset-2 col-md-6 offset-md-0">
+        <div className="display-posts">
           <ul>
             {this.state.posts
               .map(post => {
                 return (
                   <li key={post.id}>
-                    <h3>{post.postText}</h3>
-                    <p>Posteado por: {post.user}</p>
+                    <p className="text-color">{post.user}</p>
+                    <p className="bolder">{post.postText}</p>
+                    <hr/>
                     {post.user === (this.props.user.displayName ||
                     this.props.user.email) ? (
-                      <button onClick={() => this.removePost(post.id)}>
+                      <button className="button-post" onClick={() => this.removePost(post.id)}>
                         Borrar
                       </button>
                     ) : null }

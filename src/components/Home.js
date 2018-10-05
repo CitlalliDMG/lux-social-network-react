@@ -46,11 +46,13 @@ class HomePage extends Component {
     return (
       <React.Fragment>
         {this.state.user ?
-        (<div>
+        (<React.Fragment>
         <Navigation onLogin={this.login} onLogout={this.logout} user={this.state.user} />
-        <PostInput user={this.state.user} />
-        <DisplayPost user={this.state.user} />
-        </div>)
+        <div className="row mt-5">
+          <PostInput user={this.state.user} />
+          <DisplayPost user={this.state.user} />
+        </div>
+        </React.Fragment>)
         :
         (<SignInPage onLogin={this.login} onLogout={this.logout} user={this.state.user}/>)
         }

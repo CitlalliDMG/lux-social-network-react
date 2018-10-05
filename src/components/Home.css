@@ -1,3 +1,8 @@
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 .container {
   width: 50%;
   margin: 1.5em auto;
