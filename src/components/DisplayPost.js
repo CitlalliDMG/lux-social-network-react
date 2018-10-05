@@ -27,6 +27,11 @@ class DisplayPost extends Component {
     });
   }
 
+  removePost(postId) {
+    const postRef = firebase.db.ref(`/posts/${postId}`);
+    postRef.remove();
+  }
+
   render() {
     return (
       <section className="display-item">
@@ -37,6 +42,7 @@ class DisplayPost extends Component {
                 <li key={post.id}>
                   <h3>{post.postText}</h3>
                   <p>Posteado por: {post.user}</p>
+                  <button onClick={() => this.removePost(post.id)}>Borrar</button>
                 </li>
               )
             }).reverse()

@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { firebase } from "../firebase";
 
 class PostInput extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       currentPost: "",
       username: ""
@@ -17,7 +17,7 @@ class PostInput extends Component {
     const postRef = firebase.db.ref('posts');
     const post = {
       postText: this.state.currentPost,
-      user: this.state.username
+      user: this.props.user.displayName || this.props.user.email
     }
     postRef.push(post);
     this.setState({
@@ -40,8 +40,7 @@ class PostInput extends Component {
             type="text"
             name="username"
             placeholder="What's your name?"
-            onChange={this.handleChange}
-            value={this.state.username}
+            defaultValue={this.props.user.displayName || this.props.user.email}
           />
           <input
             type="text"
