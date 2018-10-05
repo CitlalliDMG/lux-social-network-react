@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.2/workbox-sw.js");
 
 importScripts(
-  "/CitlalliDMG/lux-social-network-react.git/precache-manifest.f01b0daac179908f958c1ea17bc1e362.js"
+  "/lux-social-network-react/precache-manifest.11a0495ffc830dc85c6d1d7ace18b8e0.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/CitlalliDMG/lux-social-network-react.git/index.html", {
+workbox.routing.registerNavigationRoute("/lux-social-network-react/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
