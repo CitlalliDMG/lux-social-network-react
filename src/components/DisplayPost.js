@@ -2,16 +2,16 @@ import React, { Component } from "react";
 import { firebase } from "../firebase";
 
 class DisplayPost extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       posts: []
     };
   }
 
   componentDidMount() {
-    const postRef = firebase.db.ref('posts');
-    postRef.on('value', (snapshot) => {
+    const postRef = firebase.db.ref("posts");
+    postRef.on("value", snapshot => {
       let posts = snapshot.val();
       let newState = [];
       for (let post in posts) {
@@ -37,16 +37,22 @@ class DisplayPost extends Component {
       <section className="display-item">
         <div className="wrapper">
           <ul>
-            {this.state.posts.map((post) => {
-              return (
-                <li key={post.id}>
-                  <h3>{post.postText}</h3>
-                  <p>Posteado por: {post.user}</p>
-                  <button onClick={() => this.removePost(post.id)}>Borrar</button>
-                </li>
-              )
-            }).reverse()
-            }
+            {this.state.posts
+              .map(post => {
+                return (
+                  <li key={post.id}>
+                    <h3>{post.postText}</h3>
+                    <p>Posteado por: {post.user}</p>
+                    {post.user === (this.props.user.displayName ||
+                    this.props.user.email) ? (
+                      <button onClick={() => this.removePost(post.id)}>
+                        Borrar
+                      </button>
+                    ) : null }
+                  </li>
+                );
+              })
+              .reverse()}
           </ul>
         </div>
       </section>

@@ -4,6 +4,8 @@ import { firebase, auth } from '../firebase';
 import Navigation from "./Navigation";
 import PostInput from "./PostInput";
 import DisplayPost from "./DisplayPost";
+import SignInPage from "./SignIn";
+
 
 class HomePage extends Component {
   constructor(props) {
@@ -42,19 +44,17 @@ class HomePage extends Component {
 
   render() {
     return (
-      <div className="container">
-        <Navigation onLogin={this.login} onLogout={this.logout} user={this.state.user} />
+      <React.Fragment>
         {this.state.user ?
-        <div>
+        (<div>
+        <Navigation onLogin={this.login} onLogout={this.logout} user={this.state.user} />
         <PostInput user={this.state.user} />
         <DisplayPost user={this.state.user} />
-        </div>
+        </div>)
         :
-        <div className="wrapper">
-        <p>Necesitas iniciar sesión para ver el contenido de esta página</p>
-        </div>
+        (<SignInPage onLogin={this.login} onLogout={this.logout} user={this.state.user}/>)
         }
-      </div>
+      </React.Fragment>
     );
   }
 }

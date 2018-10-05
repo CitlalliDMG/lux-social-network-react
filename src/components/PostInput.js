@@ -3,27 +3,27 @@ import { firebase } from "../firebase";
 
 class PostInput extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       currentPost: "",
       username: ""
-    }
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    const postRef = firebase.db.ref('posts');
+    const postRef = firebase.db.ref("posts");
     const post = {
       postText: this.state.currentPost,
       user: this.props.user.displayName || this.props.user.email
-    }
+    };
     postRef.push(post);
     this.setState({
-      currentPost:'',
-      username: ''
-    })
+      currentPost: "",
+      username: ""
+    });
   }
 
   handleChange = event => {
@@ -36,20 +36,15 @@ class PostInput extends Component {
     return (
       <section className="add-item">
         <form onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            name="username"
-            placeholder="What's your name?"
-            defaultValue={this.props.user.displayName || this.props.user.email}
-          />
+          <h3>¿Qué te dio luz este día?</h3>
           <input
             type="text"
             name="currentPost"
-            placeholder="What are you bringing?"
+            placeholder="Escribelo aquí"
             onChange={this.handleChange}
             value={this.state.currentPost}
           />
-          <button>Add Item</button>
+          <button>Compartir</button>
         </form>
       </section>
     );
